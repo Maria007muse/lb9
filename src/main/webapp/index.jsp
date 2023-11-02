@@ -19,7 +19,7 @@
 <h2>Функции системы</h2>
 <ul class="list-group list-group-flush">
 <li class="list-group-item list-group-itemprimary"><a href="#">Клиенты</a>
-<li class="list-group-item list-group-iteminfo"><a href="#">Услуги</a>
+<li class="list-group-item list-group-iteminfo"><a href="#">Виды клиентов</a>
 </ul>
  </div>
 <br><br>
