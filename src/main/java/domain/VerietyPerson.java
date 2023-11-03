@@ -29,12 +29,9 @@ public class VerietyPerson {
 	}
 	@Override
 	public String toString() {
-	return "Role {" + "Id = " + id + ", NameVeriety = " + nameveriety
+	return "VerietyPerson {" + "Id = " + id + ", NameVeriety = " + nameveriety
 	+ "}";
 	}
-
-
-
 }
 
 

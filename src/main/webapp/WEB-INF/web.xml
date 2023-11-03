@@ -10,7 +10,7 @@
     <servlet-name>PersonsServle</servlet-name>
     <url-pattern>/PersonsServle</url-pattern>
   </servlet-mapping>
-  <display-name>person</display-name>
+  <display-name>persons</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>VerietyServlet</display-name>
+    <servlet-name>VerietyServlet</servlet-name>
+    <servlet-class>controller.VerietyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerietyServlet</servlet-name>
+    <url-pattern>/VerietyServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

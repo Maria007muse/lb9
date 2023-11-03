@@ -11,14 +11,14 @@ import java.io.PrintWriter;
 /**
 * Servlet implementation class RoleServlet_
 */
-@WebServlet("/person")
-public class PersonsServle extends HttpServlet {
+@WebServlet("/verietyperson")
+public class VerietyServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
 
  /**
  * @see HttpServlet#HttpServlet()
  */
- public PersonsServle() {
+ public VerietyServlet() {
  super();
  // TODO Auto-generated constructor stub
  }
@@ -30,7 +30,7 @@ HttpServletResponse response)
 	    // Выполните необходимую логику, если есть, перед перенаправлением
 
 	    // Получите объект RequestDispatcher и укажите путь к "person.jsp"
-	 RequestDispatcher dispatcher = request.getRequestDispatcher("/views/person.jsp");
+	 RequestDispatcher dispatcher = request.getRequestDispatcher("/views/verietyperson.jsp");
 	    // Вызовите метод forward, чтобы перенаправить запрос к "person.jsp"
 	    dispatcher.forward(request, response);
 	}

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <meta charset="UTF-8">
 <!-- Настройка viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,13 +19,19 @@
 <div class="list-group text-center py-3 px-3">
 <h2>Функции системы</h2>
 <ul class="list-group list-group-flush">
-<li class="list-group-item list-group-itemprimary"><a href="#">Клиенты</a>
-<li class="list-group-item list-group-iteminfo"><a href="#">Виды клиентов</a>
+<li class="list-group-item list-group-itemprimary">
+<a href="/persons/person">Клиенты</a>
+<li class="list-group-item list-group-iteminfo">
+<a href="/persons/verietyperson">Виды клиентов</a>
 </ul>
  </div>
 <br><br>
 </div>
 <jsp:include page="/views/footer.jsp" />
 </div>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+<!-- Bootstrap JS + Popper JS -->
+<script defer src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
