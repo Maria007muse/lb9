@@ -7,6 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
+import dao.PersonDbDAO;
+import dao.VerietyDbDAO;
+import domain.Person;
+import domain.VerietyPerson;
 
 /**
 * Servlet implementation class RoleServlet_
@@ -27,12 +33,28 @@ private static final long serialVersionUID = 1L;
 HttpServletResponse response)
 */
  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    // Выполните необходимую логику, если есть, перед перенаправлением
-
-	    // Получите объект RequestDispatcher и укажите путь к "person.jsp"
-	 RequestDispatcher dispatcher = request.getRequestDispatcher("/views/person.jsp");
-	    // Вызовите метод forward, чтобы перенаправить запрос к "person.jsp"
-	    dispatcher.forward(request, response);
+	 response.setContentType("text/html");
+	 String userPath;
+	 List<Person> persons;
+	 List<VerietyPerson> verieties;
+	 VerietyDbDAO daoRole = new VerietyDbDAO();
+	 PersonDbDAO dao = new PersonDbDAO();
+	 try {
+	 persons = dao.findAll();
+	 verieties = daoRole.findAll();
+	 for (Person person: persons) {
+	 person.setVeriety(daoRole.FindById(person.getIdRole(), verieties));
+	 }
+	 request.setAttribute("persons", persons);
+	 } catch (Exception e) {
+	 // TODO Auto-generated catch block
+	 e.printStackTrace();
+	 }
+	  userPath = request.getServletPath();
+	 if("/person".equals(userPath)){
+	 request.getRequestDispatcher("/views/person.jsp").forward(request
+	 , response);
+	 }
 	}
 /**
 * @see HttpServlet#doPost(HttpServletRequest request,

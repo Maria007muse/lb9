@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container-fluid">
-<jsp:include page="/views/header.jsp" />
+<jsp:include page="//views//header.jsp" />
 <div class="container">
 <br><br><br>
 <div class="list-group text-center py-3 px-3">
@@ -27,7 +27,7 @@
  </div>
 <br><br>
 </div>
-<jsp:include page="/views/footer.jsp" />
+<jsp:include page="//views//footer.jsp" />
 </div>
 <!-- jQuery -->
 <script src="js/jquery.js"></script>

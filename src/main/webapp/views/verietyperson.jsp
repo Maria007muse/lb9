@@ -2,13 +2,8 @@
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ page import="domain.VerietyPerson"%>
-<%
-VerietyPerson r1 = new VerietyPerson(1l, "инвестор");
-VerietyPerson r2 = new VerietyPerson(2l, "доверительное управление");
-VerietyPerson[] verieties = new VerietyPerson[]{r1, r2};
-int length = verieties.length;
-pageContext.setAttribute("verieties", verieties);
-%>
+
+
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">

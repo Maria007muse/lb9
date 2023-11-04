@@ -3,18 +3,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ page import="domain.VerietyPerson"%>
 <%@ page import="domain.Person"%>
-<%
-VerietyPerson r1 = new VerietyPerson(1l, "инвестор");
-VerietyPerson r2 = new VerietyPerson(2l, "доверительное управление");
-VerietyPerson[] verieties = new VerietyPerson[]{r1, r2};
-pageContext.setAttribute("verieties", verieties);
-Person p1 = new Person(1l, "Иван","Иванов", "ivanov@mail.ru", "+7(961)-289-55-24", 2334345, 1l, r1);
-Person p2 = new Person(2l, "Петр","Петров", "petrov@mail.ru", "+7(961)-289-44-39",43534545, 2l, r2);
-Person p3= new Person(3l, "Сидор","Сидоров", "sidorov@mail.ru", "+7(961)-289-33-57",839738453, 3l, r2);
-Person p4 = new Person(4l, "Иван","Иванов", "ivanov@mail.ru", "+7(961)-289-44-39",298139823, 4l, r1);
-Person[] persons = new Person[]{p1, p2, p3, p4};
-pageContext.setAttribute("persons", persons);
-%>
+
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">

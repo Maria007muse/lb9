@@ -102,7 +102,7 @@ this.email = email;
 public Integer getInn() {
 return inn;
 }
-public void setEmail(Integer inn) {
+public void setInn(Integer inn) {
 this.inn = inn;
 }
 public String getVeriety() {
@@ -122,8 +122,8 @@ public String toString() {
 return "VerietyPerson {" + "Id = " + id +
 ", firstName = " + firstName +
 ", lastName = " + lastName +
-", phone = " + phone +
 ", email = " + email +
+", phone = " + phone +
 ", inn = " + inn +
 ", namerole = " + getVeriety() +
 "}";
