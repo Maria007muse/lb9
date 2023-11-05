@@ -36,6 +36,7 @@ pageEncoding="UTF-8"%>
  </thead>
  <tbody>
  <c:forEach var="verietyperson" items="${verieties}">
+ 
  <tr>
  <td>${verietyperson.getId()}</td>
  <td>${verietyperson.getNameveriety()}</td>
@@ -58,11 +59,9 @@ pageEncoding="UTF-8"%>
  <form method="POST" action="">
  <h3>Новый вид клиента</h3>
  <div class="mb-3">
- <br> <label for="inputRole"
- class="col-sm-3 col-form-label">Вид</label>
+ <br> <label for="inputVerietyPerson" class="col-sm-3 col-form-label">Вид</label>
  <div class="col-sm-6">
- <input type="text" name="inputVerietyPerson"
- class="form-control" id="personVeriety" />
+ <input type="text" name="inputVerietyPerson" class="form-control" id="personVeriety" />
  </div>
  </div>
  <p>

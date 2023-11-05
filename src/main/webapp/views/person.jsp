@@ -20,8 +20,7 @@ pageEncoding="UTF-8"%>
 <!-- Bootstrap JS + Popper JS -->
 <script defer src="js/bootstrap.min.js"></script>
 <script
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.mi
-n.js"></script>
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 <body>
@@ -39,7 +38,6 @@ n.js"></script>
  <th scope="col">Вид клиента</th>
  <th scope="col">Телефон</th>
  <th scope="col">Эл.почта</th>
- <th scope="col">ИНН</th>
  <th scope="col">Редактировать</th>
  <th scope="col">Удалить</th>
  </thead>
@@ -52,7 +50,6 @@ n.js"></script>
  <td>${person.getVeriety()}</td>
  <td>${person.getPhone()}</td>
  <td>${person.getEmail()}</td>
- <td>${person.getInn()}</td>
  <td width="20">
   <a href="#" role="button" class="btn btn-outline-primary">
     <img alt="Редактировать" src="images/icon-edit.png" style="width: 18px; height: 18px;">
@@ -89,14 +86,15 @@ n.js"></script>
  name="firstname" />
  </div>
  </div>
+ 
  <div class="mb-3 row">
  <label for="verietyname" class="col-sm-3 col-form-label">Вид клиента</label>
  <div class="col-sm-7">
  <select name="veriety" class="form-control">
  <option>Выберите вид</option>
- <c:forEach var="veriety" items="${verieties}">
- <option value="${veriety}">
-<c:out value="${veriety.nameveriety}" />
+ <c:forEach var="verietyperson" items="${verieties}">
+ <option value="${verietyperson}">
+ <c:out value="${verietyperson.getNameveriety()}"></c:out>
  </option>
  </c:forEach>
  </select>
@@ -118,14 +116,6 @@ n.js"></script>
  <div class="col-sm-7">
  <input type="text" class="form-control"
  id="staticemail" name="email" />
- </div>
- </div>
- <div class="mb-3 row">
- <label for="inn"
- class="col-sm-3 col-form-label">ИНН</label>
- <div class="col-sm-7">
- <input type="text" class="form-control"
- id="staticemail" name="inn" />
  </div>
  </div>
  <p> <br>

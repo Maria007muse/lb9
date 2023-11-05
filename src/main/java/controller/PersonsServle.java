@@ -37,13 +37,21 @@ HttpServletResponse response)
 	 String userPath;
 	 List<Person> persons;
 	 List<VerietyPerson> verieties;
-	 VerietyDbDAO daoRole = new VerietyDbDAO();
+	 VerietyDbDAO daoVeriety = new VerietyDbDAO();
 	 PersonDbDAO dao = new PersonDbDAO();
 	 try {
+		 verieties = daoVeriety.findAll();
+		 request.setAttribute("verieties", verieties);
+		 } catch (Exception e) {
+		 // TODO Auto-generated catch block
+		 e.printStackTrace();
+		 }
+
+	 try {
 	 persons = dao.findAll();
-	 verieties = daoRole.findAll();
+	 verieties = daoVeriety.findAll();
 	 for (Person person: persons) {
-	 person.setVeriety(daoRole.FindById(person.getIdRole(), verieties));
+	 person.setVeriety(daoVeriety.FindById(person.getIdVeriety(), verieties));
 	 }
 	 request.setAttribute("persons", persons);
 	 } catch (Exception e) {
@@ -62,7 +70,25 @@ HttpServletResponse response)
 */
 protected void doPost(HttpServletRequest request,
 HttpServletResponse response) throws ServletException, IOException {
-// TODO Auto-generated method stub
+	PersonDbDAO dao = new PersonDbDAO();
+    String firstName = request.getParameter("firstname");
+    String lastName = request.getParameter("lastname");
+    String email = request.getParameter("email");
+    String phone = request.getParameter("phone");
+    String veriety = request.getParameter("veriety");
+    int index1 = veriety.indexOf('=');
+    int index2 = veriety.indexOf(",");
+    String r1 = veriety.substring(index1 + 1, index2);
+    Long idVeriety = Long.parseLong(r1.trim());
+    VerietyPerson verietyPerson = new VerietyPerson(idVeriety, veriety);
+    Person newPerson = new Person(idVeriety, firstName, lastName, phone, email, idVeriety, verietyPerson);
+	try {
+	Long index = dao.insert(newPerson);
+	System.out.println("Adding result: " + index );
+	} catch (Exception e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+	}
 doGet(request, response);
 }
 }

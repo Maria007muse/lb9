@@ -18,9 +18,7 @@ public class Person {
 
  // email
  private String email;
- 
- // inn
- private Integer inn;
+
 
  // Внешний ключ 
  private Long idVeriety;
@@ -31,35 +29,31 @@ public class Person {
 }
 
  public Person(String firstName, String lastName, String phone,
- String email, Integer inn, VerietyPerson veriety) {
+ String email, VerietyPerson veriety) {
  this.firstName = firstName;
  this.lastName = lastName;
  this.email = email;
  this.phone = phone;
- this.inn = inn;
  this.veriety = veriety;
  }
 
  public Person(String firstName, String lastName, String phone,
- String email, Integer inn, Long idVeriety, VerietyPerson veriety) {
+ String email, Long idVeriety, VerietyPerson veriety) {
  this.firstName = firstName;
  this.lastName = lastName;
  this.email = email;
  this.phone = phone;
- this.inn = inn;
  this.veriety = veriety;
  this.idVeriety = idVeriety;
  }
 
  public Person(Long id, String firstName, String lastName, String
-phone,
- String email, Integer inn, Long idVeriety, VerietyPerson veriety) {
+phone, String email, Long idVeriety, VerietyPerson veriety) {
  this.id = id;
  this.firstName = firstName;
  this.lastName = lastName;
  this.email = email;
  this.phone = phone;
- this.inn = inn;
  this.veriety = veriety;
  this.idVeriety = idVeriety;
  }
@@ -99,22 +93,17 @@ return email;
 public void setEmail(String email) {
 this.email = email;
 }
-public Integer getInn() {
-return inn;
-}
-public void setInn(Integer inn) {
-this.inn = inn;
-}
+
 public String getVeriety() {
 return veriety.getNameveriety();
 }
 public void setVeriety(VerietyPerson veriety) {
 this.veriety = veriety;
 }
-public Long getIdRole() {
+public Long getIdVeriety() {
 return idVeriety;
 }
-public void setIdRole(Long idVeriety) {
+public void setIdVeriety(Long idVeriety) {
 this.idVeriety = idVeriety;
 }
 @Override
@@ -124,8 +113,7 @@ return "VerietyPerson {" + "Id = " + id +
 ", lastName = " + lastName +
 ", email = " + email +
 ", phone = " + phone +
-", inn = " + inn +
-", namerole = " + getVeriety() +
+", nameveriety = " + getVeriety() +
 "}";
 }
 }

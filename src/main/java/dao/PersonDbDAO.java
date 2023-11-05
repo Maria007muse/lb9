@@ -1,11 +1,13 @@
 package dao;
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import domain.Person;
+import domain.VerietyPerson;
 /**
 * Класс реализации функций взаимодействия с базой данных для таблицы
 persons
@@ -13,10 +15,10 @@ persons
 */
 public class PersonDbDAO implements RepositoryDAO<Person> {
 // SQL-запросы к таблице persons базы данных
-private static final String select_all_person = "SELECT id, firstName, lastname, email, phone, inn, verietyid FROM persons ORDER BY lastname ASC";
-private static final String select_person_ById = "SELECT id, verietyid, firstname, lastname, phone, email, inn FROM persons WHERE id = ?";
-private static final String insert_person = "INSERT INTO persons(verietyid, firstname, lastname, phone, email , inn) VALUES(?,?,?,?,?)";
-private static final String edit_person = "UPDATE persons SET verietyid = ?, firstname = ?, lastname = ?, phone = ?, email = ?, inn = ? WHERE id = ?";
+private static final String select_all_person = "SELECT id, firstname, lastname, email, phone, verietyid FROM persons ORDER BY lastname ASC";
+private static final String select_person_ById = "SELECT id, verietyid, firstname, lastname, phone, email FROM persons WHERE id = ?";
+private static final String insert_person = "INSERT INTO persons(verietyid, firstname, lastname, phone, email) VALUES(?,?,?,?,?)";
+private static final String edit_person = "UPDATE persons SET verietyid = ?, firstname = ?, lastname = ?, phone = ?, email = ?, WHERE id = ?";
 private static final String delete_person = "DELETE FROM persons WHERE id = ?";
 // Создание соединения с базой данных
 Connection connection = DbConnectionBuilder.getConnection();
@@ -30,12 +32,11 @@ public Long insert (Person person) throws Exception {
 try (
 PreparedStatement pst = connection.prepareStatement(insert_person, new String[] { "id" })) {
 Long Id = -1L;
-pst.setString(1, person.getFirstName());
-pst.setString(2, person.getLastName());
-pst.setString(3, person.getVeriety());
+pst.setLong(1, person.getIdVeriety());
+pst.setString(2, person.getFirstName());
+pst.setString(3, person.getLastName());
 pst.setString(4, person.getPhone());
 pst.setString(5, person.getEmail());
-pst.setInt(6, person.getInn());
 pst.executeUpdate();
 ResultSet gk = pst.getGeneratedKeys();
 if (gk.next()) {
@@ -55,7 +56,6 @@ pst.setString(2, person.getLastName());
 pst.setString(3, person.getVeriety());
 pst.setString(4, person.getPhone());
 pst.setString(5, person.getEmail());
-pst.setInt(6, person.getInn());
 pst.executeUpdate();
 } catch (SQLException e) {
 throw new Exception(e);
@@ -76,6 +76,7 @@ Person person = null;
 try (
 PreparedStatement pst = connection.prepareStatement(select_person_ById)){
 pst.setLong(1, Id);
+
 ResultSet rs = pst.executeQuery();
 if (rs.next()) {
 person = fillPerson(rs);
@@ -103,15 +104,14 @@ throw new Exception(e);
 return list;
 }
 private Person fillPerson(ResultSet rs) throws SQLException, Exception {
-Long idVeriety = rs.getLong("verietyid");
+	Long idVeriety = rs.getLong("verietyid");
 Person person = new Person();
 person.setId(rs.getLong("id"));
 person.setFirstName(rs.getString("firstname"));
 person.setLastName(rs.getString("lastname"));
 person.setPhone(rs.getString("phone"));
 person.setEmail(rs.getString("email"));
-person.setInn(rs.getInt("inn"));
-person.setIdRole(idVeriety);
+person.setIdVeriety(idVeriety);
 return person;
 }
 }

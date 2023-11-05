@@ -13,6 +13,7 @@ import java.util.List;
 import domain.VerietyPerson;
 import dao.VerietyDbDAO;
 
+
 @WebServlet("/verietyperson")
 public class VerietyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -40,6 +41,16 @@ public class VerietyServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	VerietyDbDAO dao = new VerietyDbDAO();
+    	String name = request.getParameter("inputVerietyPerson");
+    	VerietyPerson newVerietyPerson = new VerietyPerson(name);
+    	try {
+    	Long index = dao.insert(newVerietyPerson);
+    	System.out.println("Adding result: " + index );
+    	} catch (Exception e) {
+    	// TODO Auto-generated catch block
+    	e.printStackTrace();
+    	}
         doGet(request, response);
     }
 }
