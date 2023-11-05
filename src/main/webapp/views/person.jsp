@@ -51,13 +51,15 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
  <td>${person.getPhone()}</td>
  <td>${person.getEmail()}</td>
  <td width="20">
-  <a href="#" role="button" class="btn btn-outline-primary">
+  <a href="<c:url value="/editperson?id=${person.getId()}"/>" role="button" class="btn btn-outline-primary">
     <img alt="Редактировать" src="images/icon-edit.png" style="width: 18px; height: 18px;">
   </a>
 </td>
 <td width="20">
-  <a href="#" role="button" class="btn btn-outline-primary">
-    <img alt="Удалить" src="images/icon-delete.png" style="width: 16px; height: 16px;">
+  <a href="<c:url value="/deleteperson?id=${person.getId()}" />" role="button" class="btn btn-outline-primary">
+    <img alt="Удалить" src="images/icon-delete.png" style="width: 16px; height: 16px;"
+    onclick="return confirm('Удалить сотрудника с кодом:
+'+${person.getId()}+'?')">
   </a>
 </td>
  </tr>

@@ -35,19 +35,21 @@ pageEncoding="UTF-8"%>
  <th scope="col">Удалить</th>
  </thead>
  <tbody>
- <c:forEach var="verietyperson" items="${verieties}">
+ <c:forEach var="veriety" items="${verieties}">
  
  <tr>
- <td>${verietyperson.getId()}</td>
- <td>${verietyperson.getNameveriety()}</td>
+ <td>${veriety.getId()}</td>
+ <td>${veriety.getNameveriety()}</td>
  <td width="20">
-  <a href="#" role="button" class="btn btn-outline-primary">
+  <a href="<c:url value="/editveriety?id=${veriety.getId()}" />" role="button" class="btn btn-outline-primary">
     <img alt="Редактировать" src="images/icon-edit.png" style="width: 18px; height: 18px;">
   </a>
 </td>
 <td width="20">
-  <a href="#" role="button" class="btn btn-outline-primary">
-    <img alt="Удалить" src="images/icon-delete.png" style="width: 16px; height: 16px;">
+  <a href="<c:url value="/deleteveriety?id=${veriety.getId()}" />" role="button" class="btn btn-outline-primary">
+    <img alt="Удалить" src="images/icon-delete.png" style="width: 16px; height: 16px;" 
+    onclick="return confirm('Удалить должность с кодом:
+'+${veriety.getId()}+'?')">
   </a>
 </td>
  </tr>

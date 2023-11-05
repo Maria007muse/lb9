@@ -18,7 +18,7 @@ public class PersonDbDAO implements RepositoryDAO<Person> {
 private static final String select_all_person = "SELECT id, firstname, lastname, email, phone, verietyid FROM persons ORDER BY lastname ASC";
 private static final String select_person_ById = "SELECT id, verietyid, firstname, lastname, phone, email FROM persons WHERE id = ?";
 private static final String insert_person = "INSERT INTO persons(verietyid, firstname, lastname, phone, email) VALUES(?,?,?,?,?)";
-private static final String edit_person = "UPDATE persons SET verietyid = ?, firstname = ?, lastname = ?, phone = ?, email = ?, WHERE id = ?";
+private static final String edit_person = "UPDATE persons SET verietyid = ?, firstname = ?, lastname = ?, phone = ?, email = ? WHERE id = ?";
 private static final String delete_person = "DELETE FROM persons WHERE id = ?";
 // Создание соединения с базой данных
 Connection connection = DbConnectionBuilder.getConnection();
@@ -51,11 +51,12 @@ throw new Exception(e);
 @Override
 public void update(Person person) throws Exception {
 try (PreparedStatement pst = connection.prepareStatement(edit_person)) {
-pst.setString(1, person.getFirstName());
-pst.setString(2, person.getLastName());
-pst.setString(3, person.getVeriety());
+	pst.setLong(1, person.getIdVeriety());
+pst.setString(2, person.getFirstName());
+pst.setString(3, person.getLastName());
 pst.setString(4, person.getPhone());
 pst.setString(5, person.getEmail());
+pst.setLong(6, person.getId());
 pst.executeUpdate();
 } catch (SQLException e) {
 throw new Exception(e);
